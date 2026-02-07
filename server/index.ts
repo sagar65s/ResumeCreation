@@ -3,6 +3,7 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
+import path from "path";
 
 const app = express();
 const httpServer = createServer(app);
@@ -102,3 +103,18 @@ app.use((req, res, next) => {
     },
   );
 })();
+
+
+// ... unga mattha routes (API calls) ellam inga irukkum ...
+
+// PRODUCTION CONFIG
+if (process.env.NODE_ENV === "production") {
+  // 1. Static files (JS, CSS, Images) enga irukku nu sollurom
+  const publicPath = path.join(__dirname, "public"); 
+  app.use(express.static(publicPath));
+
+  // 2. 404 error varama irukka, entha URL vanthalum index.html-ah kaatnum
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(publicPath, "index.html"));
+  });
+}
