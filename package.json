@@ -5,8 +5,8 @@
   "type": "commonjs",
   "scripts": {
     "dev": "npx tsx watch server/index.ts",
-    "build": "echo 'skip build'",
-    "start": "tsx server/index.ts",
+    "build": "vite build",
+    "start": "npx serve -s dist",
     "check": "tsc",
     "db:push": "drizzle-kit push"
   },
