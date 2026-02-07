@@ -5,8 +5,8 @@
   "type": "commonjs",
   "scripts": {
     "dev": "npx tsx watch server/index.ts",
-    "build": "tsc -p tsconfig.server.json",
-    "start": "node dist/server/index.js",
+    "build": "echo 'skip build'",
+    "start": "tsx server/index.ts",
     "check": "tsc",
     "db:push": "drizzle-kit push"
   },
@@ -123,5 +123,3 @@
     "bufferutil": "^4.0.8"
   }
 }
-
-
