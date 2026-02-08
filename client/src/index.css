@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Premium Modern Palette - Deep Blue & Vibrant Purple/Pink Gradients */
+  /* Premium Modern Palette - Deep Blue & Vibrant Purple/Pink Gradients *
   --background: 224 71% 4%;
   --foreground: 210 40% 98%;
 
@@ -40,7 +40,7 @@
   --font-display: 'Outfit', sans-serif;
 }
 
-/* Light Theme Override - Clean & Professional */
+/* Light Theme Override - Clean & Professional *
 .light {
   --background: 0 0% 100%;
   --foreground: 224 71% 4%;
@@ -102,7 +102,7 @@
     @apply bg-clip-text text-transparent bg-gradient-to-br from-white to-white/60;
   }
 
-  /* Resume Preview Print Styles */
+  /* Resume Preview Print Styles *
   @media print {
     @page {
       margin: 0;
@@ -126,9 +126,158 @@
       box-shadow: none !important;
       border: none !important;
     }
-    /* Hide scrollbars during print */
+    /* Hide scrollbars during print *
     ::-webkit-scrollbar {
       display: none;
     }
   }
 }
+*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 224 71% 4%;
+  --foreground: 210 40% 98%;
+
+  --card: 224 71% 6%;
+  --card-foreground: 210 40% 98%;
+
+  --popover: 224 71% 6%;
+  --popover-foreground: 210 40% 98%;
+
+  --primary: 263 70% 50%;
+  --primary-foreground: 210 40% 98%;
+
+  --secondary: 217 19% 27%;
+  --secondary-foreground: 210 40% 98%;
+
+  --muted: 217 19% 27%;
+  --muted-foreground: 215 20% 65%;
+
+  --accent: 263 70% 50%;
+  --accent-foreground: 210 40% 98%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 217 19% 27%;
+  --input: 217 19% 27%;
+  --ring: 263 70% 50%;
+
+  --radius: 0.75rem;
+
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+}
+
+/* Light Theme */
+.light {
+  --background: 0 0% 100%;
+  --foreground: 224 71% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 224 71% 4%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 224 71% 4%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    overflow: hidden; /* ❗ page scroll off */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-tight font-bold;
+  }
+}
+
+@layer utilities {
+  /* 🔥 MAIN APP LAYOUT */
+  .app-layout {
+    @apply h-screen flex overflow-hidden;
+  }
+
+  /* 🔥 LEFT EDITOR PANEL – SCROLL ENABLE */
+  .editor-panel {
+    @apply w-full md:w-1/2 h-full overflow-y-auto overflow-x-hidden;
+    scroll-behavior: smooth;
+  }
+
+  /* 🔥 RIGHT PREVIEW PANEL – NO SCROLL */
+  .preview-panel {
+    @apply w-full md:w-1/2 h-full overflow-hidden;
+  }
+
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-white/10 shadow-xl;
+  }
+
+  .glass-panel {
+    @apply bg-black/40 backdrop-blur-md border border-white/5;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500;
+  }
+
+  .text-gradient-subtle {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-white to-white/60;
+  }
+
+  /* Scrollbar styling (optional but 🔥) */
+  .editor-panel::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .editor-panel::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 10px;
+  }
+
+  /* PRINT */
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+
+    #resume-preview,
+    #resume-preview * {
+      visibility: visible;
+    }
+
+    #resume-preview {
+      position: absolute;
+      inset: 0;
+      background: white !important;
+      color: black !important;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+

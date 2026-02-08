@@ -105,7 +105,7 @@ export default function Editor() {
   if (!resume) return <div>Not found</div>;
 
   return (
-    <div className="h-screen flex flex-col bg-background overflow-hidden">
+    <div className="h-screen flex flex-col bg-background overflow-y-auto">
       {/* Top Bar */}
       <header className="h-16 border-b border-white/10 bg-card px-4 flex items-center justify-between shrink-0 z-20">
         <div className="flex items-center gap-4">
@@ -136,7 +136,7 @@ export default function Editor() {
         </div>
       </header>
 
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-y-auto">
         {/* Editor Panel */}
         <div className="w-full md:w-1/2 lg:w-[500px] border-r border-white/10 bg-card/50 flex flex-col">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col">
