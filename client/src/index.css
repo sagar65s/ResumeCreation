@@ -205,7 +205,7 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
-    overflow: hidden; /* ❗ page scroll off */
+    overflow: auto; /* ❗ page scroll off */
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -217,7 +217,7 @@
 @layer utilities {
   /* 🔥 MAIN APP LAYOUT */
   .app-layout {
-    @apply h-screen flex overflow-hidden;
+    @apply h-screen flex overflow-auto;
   }
 
   /* 🔥 LEFT EDITOR PANEL – SCROLL ENABLE */
