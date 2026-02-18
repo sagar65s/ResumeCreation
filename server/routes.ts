@@ -18,6 +18,12 @@ export async function registerRoutes(
 ): Promise<Server> {
   setupAuth(app);
 
+// HEALTH CHECK ROUTE (Render keep-alive)
+  app.get("/health", (req, res) => {
+    res.status(200).send("OK");
+  });
+
+
   // Resume Routes
   app.get(api.resumes.list.path, async (req, res) => {
     if (!req.isAuthenticated()) return res.sendStatus(401);
